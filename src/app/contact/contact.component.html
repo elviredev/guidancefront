@@ -1,0 +1,73 @@
+<section class="view mt-4">
+    <div *ngIf="submitted && !error" class="contact-message">
+      <div class="contact-success">
+        <h2 class="success">Merci !</h2>
+        <h4>Votre demande a bien été prise en compte.</h4>
+        <br />
+        <button (click)="goHome()" class="btn btn-info">Retour à l'accueil</button>
+      </div>
+    </div>
+    <div class="service-error" *ngIf="error && submitted">
+        <h1>{{error.errorTitle}}</h1>
+        <h3>{{error.errorDesc}}</h3>
+      </div>
+  <div class="container">
+    <div class="page-desc" *ngIf="!submitted">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h1>Contact</h1>
+          <form #formContact = "ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="username">Identifiant DGA-SI</label>
+              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="emailUser.username" required #username="ngModel">
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error">
+                <div *ngIf="username.errors.required">
+                  Votre identifiant est requis.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="firstName">Prénom</label>
+              <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="emailUser.firstName" required #firstName="ngModel">
+              <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error">
+                <div *ngIf="firstName.errors.required">
+                  Votre prénom est requis.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Nom</label>
+              <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="emailUser.lastName" required #lastName="ngModel">
+              <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error">
+                <div *ngIf="lastName.errors.required">
+                  Votre nom est requis.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Professionnel</label>
+              <input type="text" class="form-control" name="email" id="email" [(ngModel)]="emailUser.emailUser" required email #email="ngModel">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+                <div *ngIf="email.errors.required">Email est requis.</div>
+                <div *ngIf="email.errors.email">Email doit avoir une adresse mail valide.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="textMessage">Message</label>
+              <textarea type="text" rows="5" class="form-control" name="textMessage" id="textMessage" [(ngModel)]="emailUser.textMessage" required #textMessage="ngModel"></textarea>
+              <div *ngIf="textMessage.invalid && (textMessage.dirty || textMessage.touched)" class="error">
+                <div *ngIf="textMessage.errors.required">
+                  Votre message est requis.
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="formContact.invalid">Contacter</button>
+          </form>
+        </div>
+      </div>
+      
+  
+    </div>
+  </div>
+</section>
+

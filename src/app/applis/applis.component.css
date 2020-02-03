@@ -1,0 +1,22 @@
+.pointerClick {
+  cursor: pointer;
+}
+
+.active {
+  background: #5b72b8;
+  border-color: #5b72b8;
+}
+
+li {
+  transition: all .2s ease-in-out;
+}
+
+li:hover {
+  background-color: #e7e9ee;
+  border-color: #e7e9ee;
+  transform: scale(1.1) translate(10px);
+}
+
+
+
+

@@ -1,0 +1,12 @@
+<div class="container mt-2 ml-2">
+    <ul class="list-group list-group-flush" *ngIf="appliList">
+        <!-- si appli courante est undefined et son lien égal au lien self de la liste
+        j'applique la classe active -->
+        <li [ngClass]="currentAppli && currentAppli._links.self == appli._links.self ? 'active':''"
+        class="list-group-item list-group-item-action pointerClick"
+        *ngFor="let appli of appliList._embedded.applis"
+        (click)="onGetContentsAppli(appli)">
+          {{ appli.appliName }}
+        </li>
+    </ul>
+</div>

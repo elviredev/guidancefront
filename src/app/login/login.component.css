@@ -1,0 +1,7 @@
+.view {
+  height: 100vh !important;
+}
+
+.errorWarn {
+  color: orangered;
+}

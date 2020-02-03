@@ -1,0 +1,41 @@
+<div class="container view mt-2">
+  <div class="card" *ngIf="currentUser">
+    <h5 class="card-header text-white bg-dark">Modifier le profil utilisateur</h5>
+      <div class="card body">
+        <form #f="ngForm" (ngSubmit)="onUpdateUser(f.value)">
+          <div class="m-2">
+            <div class="form-group">
+              <mat-form-field>
+                  <mat-label>Identifiant</mat-label>
+                <input matInput name="username" placeholder="identifiant" [(ngModel)] = "currentUser.username">
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Rôle Utilisateur</mat-label>
+                    <mat-select  name="currentRolesIds" [(ngModel)] = "currentRolesIds"  multiple>
+                      <mat-option  name="role" (onSelectionChange)="updateUserRoles($event, role)" *ngFor="let role of allRoles" [value]="role.id">
+                        {{role.roleName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <!--  <input type="checkbox" name="role.{{i}}.roleName" placeholder="role" [(ngModel)] = "role.roleName"> -->
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                  <mat-label>Application Utilisateur</mat-label>
+                  <mat-select  name="currentApplisIds" [(ngModel)] = "currentApplisIds"  multiple>
+                    <mat-option  name="appli" (onSelectionChange)="updateUserApplis($event, appli)" *ngFor="let appli of allApplis" [value]="appli.id">
+                      {{appli.appliName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+              <button type="submit" class="btn btn-primary">Mettre à jour</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+<!-- value='{{role.roleName}}' -->

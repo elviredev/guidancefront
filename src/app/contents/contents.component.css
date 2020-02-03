@@ -1,0 +1,21 @@
+.view {
+  height: 100vh !important;
+}
+
+tr:nth-child(even) {
+  background: #f6f5f4;
+  color: #5b72b8;
+}
+tr:nth-child(odd) {
+  background: #e7e9ee;
+  color: #5b72b8;
+}
+
+.bg-applis {
+  background: url("https://images.unsplash.com/photo-1438979087584-602939abfd2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+  no-repeat center center;
+  background-size: cover;
+
+}
+
+

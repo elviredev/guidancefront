@@ -1,0 +1,38 @@
+<div class="view bg-applis">
+  <div class="row">
+    <div class="col-md-3">
+      <app-applis></app-applis>
+    </div>
+    <div class="col-md-9 mt-2">
+      <table class="table" *ngIf="contentList">
+        <thead >
+          <tr class="thead-light text-dark">
+              <th>Num.</th>
+              <th>Statut</th>
+              <th>Type de Service</th>
+              <th>Contenu pastille</th>
+              <th>Affichages</th>
+              <th>Lectures</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cnt of contentList._embedded.contents">
+              <!-- <th scope="row">1</th> -->
+              <td>{{ cnt.idContentKM }}</td>
+              <td *ngIf="cnt.published">publiée</td>
+              <td *ngIf="!cnt.published">stoppée</td>
+              <td>{{ cnt.typeService }}</td>
+              <td>{{ cnt.contentName }}</td>
+              <td>{{ cnt.nbAffichages }}</td>
+              <td>{{ cnt.nbLectures }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+

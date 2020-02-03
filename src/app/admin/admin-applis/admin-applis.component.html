@@ -1,0 +1,54 @@
+<div class="container view mt-2">
+  <div class="card ">
+      <h5 class="card-header bg-dark text-light">Gestion des applications</h5>
+
+      <div class="card body">
+          <div class="m-2">
+              <button class="btn btn-outline-success my-2 my-sm-0" (click)="onNewAppli()">
+                  <fa-icon [icon]="plusIcon"></fa-icon>
+              </button>
+
+          </div>
+          <div class="card-body col-md-6" *ngIf="mode=='new-app'">
+              <form #f="ngForm" (ngSubmit)="onSaveAppli(f.value)">
+                  <div class="form-group">
+                      <label for="appliName">Application</label>
+                      <input type="text" name="appliName" class="form-control" placeholder="Entrer le nom de l'application" ngModel required>
+                  </div>
+                  <button type="submit" class="btn btn-outline-success" [disabled]="f.invalid">Valider</button>
+              </form>
+          </div>
+          <div class="card-body col-md-6" *ngIf="mode=='edit-app'">
+              <form #f="ngForm" (ngSubmit)="onUpdateAppli(f.value)">
+                  <div class="form-group">
+                      <label for="appliName">Nom de l'application</label>
+                      <input type="text" name="appliName" class="form-control" placeholder="Enter name of appli" [(ngModel)]="currentAppli.appliName">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Modifier</button>
+              </form>
+          </div>
+          <div class="card-body" *ngIf="mode=='list'">
+            <table class="table table-striped"  *ngIf="appliList">
+               <tr>
+                 <th>Applications présentes</th>
+               </tr>
+               <tr *ngFor="let appli of appliList._embedded.applis">
+                 <td>{{ appli.appliName }}</td>
+                 <td>
+                    <a class="btn btn-outline-danger" (click)="onDeleteAppli(appli)">
+                        <fa-icon [icon]="trashIcon" [styles]="{'color': '#000'}"></fa-icon>
+                    </a>
+                 </td>
+                 <td>
+                    <a class="btn btn-outline-info" (click)="onEditAppli(appli)">
+                        <fa-icon [icon]="editIcon" [styles]="{'color': '#000'}"></fa-icon>
+                    </a>
+                 </td>
+               </tr>
+            </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+
